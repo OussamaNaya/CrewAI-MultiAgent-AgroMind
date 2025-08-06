@@ -1,0 +1,38 @@
+classify_task:
+  description: >
+    Given an image of a plant located at {image_url}, use the classification API to determine
+    the most probable disease affecting it. Analyze the image carefully and provide
+    an accurate disease classification.
+  expected_output: >
+    The name of the disease (e.g., 'Tomato___Late_blight') with confidence level.
+  agent: classifier
+
+search_remedy_task:
+  description: >
+    Based on the identified disease from the previous task, search the web for scientifically 
+    supported remedies or treatment options. Focus on organic and chemical treatments that 
+    are proven effective for this specific plant disease.
+  expected_output: >
+    A detailed description of the best-known treatment(s) for the disease, including
+    application methods, timing, and any precautions.
+  agent: remedy_searcher
+
+verify_remedy_task:
+  description: >
+    Analyze the proposed remedy from the search task for reliability, scientific accuracy, 
+    and consistency. Check if the treatment is appropriate for the identified disease and 
+    assess any potential risks or side effects.
+  expected_output: >
+    A validation statement confirming whether the remedy is valid, trustworthy, and safe to use,
+    with a confidence level and any warnings if applicable.
+  agent: remedy_verifier
+
+translate_task:
+  description: >
+    Translate the complete response (disease identification + remedy + validation) into 
+    the target language: {language}. The user's original question was: "{question}".
+    Ensure the translation is accurate and culturally appropriate.
+  expected_output: >
+    The complete response (disease name, remedy description, and validation) translated 
+    into the specified language ({language}) in a clear and professional manner.
+  agent: translator
